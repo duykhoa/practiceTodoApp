@@ -2,7 +2,7 @@ import * as React from 'react';
 
 interface ILinkProps {
   text: string;
-  onClick: (event?: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  onClick?: (event?: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 }
 
 export default function Link ({ text, onClick }: ILinkProps) {
