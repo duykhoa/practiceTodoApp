@@ -1,21 +1,21 @@
 import * as React from 'react';
 import { TodoEntity } from "../TodoEntity";
+import { ChangeEvent } from 'react';
 
 interface ITodoProps {
   todo: TodoEntity;
-  onClick: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
+  onClick: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Todo: React.FunctionComponent<ITodoProps> = ({ todo, onClick }) => {
   return (
     <>
-      <input type="checkbox" checked={todo.completed} onClick={ (e) => {
-        e.preventDefault();
+      <input type="checkbox" checked={todo.completed} onChange={ (e) => {
         onClick(e);
         }
       } />
 
-      <span>{todo.name}</span>
+      <span>{todo.id}-{todo.name}----{todo.completed ? "Completed": "Active"}</span>
     </>
   );
 };

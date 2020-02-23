@@ -1,8 +1,28 @@
 import * as React from 'react';
+import { ConnectedProps, connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import { TodoState } from '../reducers';
 
-interface IAddTodoProps {
-  addTodo: (event: React.MouseEvent<HTMLInputElement, MouseEvent>, value: string) => void
+const mapStatesToProps = (state: TodoState) => {
+  const todos = {
+    todoList: state.todos
+  }
+
+  return todos;
 }
+
+const mapDispatchesToProps = (dispatch: Dispatch) => {
+  return {
+    addTodo: (name: string) => { dispatch({type: 'ADD_TODO', name: name})}
+  };
+}
+
+const connector = connect(
+  mapStatesToProps,
+  mapDispatchesToProps,
+)
+
+type IAddTodoProps = ConnectedProps<typeof connector>;
 
 const AddTodo: React.FunctionComponent<IAddTodoProps> = ({ addTodo }) => {
   let inputRef: React.RefObject<any> = React.createRef();
@@ -13,11 +33,11 @@ const AddTodo: React.FunctionComponent<IAddTodoProps> = ({ addTodo }) => {
       <input type="button" value="Add" onClick={
         (e) => {
           e.preventDefault();
-          addTodo(e, inputRef.current.value);
+          addTodo(inputRef.current.value);
         }
       }/>
     </>
   );
 };
 
-export default AddTodo;
+export default connector(AddTodo);
