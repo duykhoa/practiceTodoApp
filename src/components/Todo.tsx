@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { TodoEntity } from "../TodoEntity";
 import { ChangeEvent } from 'react';
+import { TodoEntity } from '../types';
 
 interface ITodoProps {
   todo: TodoEntity;
@@ -9,14 +9,10 @@ interface ITodoProps {
 
 const Todo: React.FunctionComponent<ITodoProps> = ({ todo, onClick }) => {
   return (
-    <>
-      <input type="checkbox" checked={todo.completed} onChange={ (e) => {
-        onClick(e);
-        }
-      } />
-
-      <span>{todo.id}-{todo.name}----{todo.completed ? "Completed": "Active"}</span>
-    </>
+    <span style={{ textDecoration: todo.completed ?  "line-through" : "none" }}>
+      <input type="checkbox" checked={todo.completed} onChange={ (e) => onClick(e) } />
+      <span>{todo.name}</span>
+    </span>
   );
 };
 

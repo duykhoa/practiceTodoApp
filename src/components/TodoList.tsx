@@ -1,10 +1,8 @@
 import * as React from 'react';
 import Todo from './Todo';
-import { TodoEntity } from '../TodoEntity';
-
 import { connect, ConnectedProps } from 'react-redux';
 import { Dispatch } from 'redux';
-import { StoreState } from '../reducers/index';
+import { TodoEntity, StoreState } from '../types';
 
 const filterVisibilityTodos = (todos: TodoEntity[], visibilityFilter: string) => {
   switch (visibilityFilter) {

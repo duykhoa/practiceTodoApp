@@ -1,28 +1,7 @@
 import { combineReducers } from 'redux';
-import { TodoEntity } from '../TodoEntity';
-
-export interface TodoState {
-  todos: TodoEntity[];
-}
-
-interface VisibilityState {
-  visibilityFilter: string;
-}
-
-export type StoreState = TodoState & VisibilityState;
+import { TodoEntity, TodoAction, FilterAction } from '../types';
 
 const initialState: Array<TodoEntity> = [];
-
-interface TodoAction {
-  type: string;
-  name: string;
-  id?: number;
-}
-
-interface FilterAction {
-  type: string;
-  filter: string;
-}
 
 let currentId: number = 0;
 

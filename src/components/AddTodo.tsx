@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { TodoState } from '../reducers';
+import { StoreState } from '../types';
 
-const mapStatesToProps = (state: TodoState) => {
+const mapStatesToProps = (state: StoreState) => {
   const todos = {
     todoList: state.todos
   }

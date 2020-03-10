@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { Dispatch } from 'redux';
-import { StoreState } from '../reducers/index';
+import { StoreState } from '../types';
 
 const mapStatesToProps = (state: StoreState) => {
   return { visibilityFilter: state.visibilityFilter };
